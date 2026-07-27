@@ -690,4 +690,268 @@ export const OWNER_FURNISH: FurnishItem[] = [
       "On Case, after Authorize block completes you can now read a post-authorize steps checklist: upload income docs (optional, improves case) → Trim builds evidence packet → informal review → formal hearing if needed.",
     implementationPlant: "not_done",
   },
+  {
+    id: "owner-furnish-059",
+    label: "Official CAD domain shown before link",
+    able: "Read the official CAD domain in plain text before opening the county verification link.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-trust", "trim-ct-owner-notice"],
+    implementationProblem:
+      "Right now I can't tell whether the verification link is a county site or a Trim shortcut before I click it.",
+    implementation:
+      "On Notice — trust strip, you can now read the official CAD domain in plain text beside the county verification link before opening it.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-060",
+    label: "Public-record provenance note",
+    able: "Read why Trim has parcel-specific facts and which public county roll supplied them.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-trust", "trim-ct-owner-notice"],
+    implementationProblem:
+      "Right now I can't tell why Trim knows my parcel facts without worrying the data came from a broker or private source.",
+    implementation:
+      "On Notice — trust strip, you can now read a public-record provenance note naming the county assessment roll as the source of parcel facts.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-061",
+    label: "Appeal deadline source line",
+    able: "Read the county appeal deadline with tax year and official source line on Notice.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-notice", "trim-ct-owner-trust"],
+    implementationProblem:
+      "Right now I can't verify whether the appeal deadline is official, current, and tied to my tax year rather than sales pressure.",
+    implementation:
+      "On Notice — proof facts, you can now read the appeal deadline with tax year, county source, and a prompt to verify it on the official CAD site.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-062",
+    label: "Self-file option disclosure",
+    able: "Read that I may verify and file directly with the county without hiring Trim.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-trust", "trim-ct-owner-consent"],
+    implementationProblem:
+      "Right now I can't compare Trim's contingency service against the free county self-file path before consenting.",
+    implementation:
+      "On Notice — trust strip, you can now read a self-file option disclosure before Consent ticks unlock the Authorize block.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-063",
+    label: "QR and link destination label",
+    able: "Read the destination domain and private-site label for any QR or personalized access link.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-trust"],
+    implementationProblem:
+      "Right now I can't distinguish a Trim private link from a government login or phishing-style shortcut.",
+    implementation:
+      "On Notice — trust strip, you can now read the destination domain and 'Trim private site' label beside every QR or personalized access link.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-064",
+    label: "No-guarantee estimate footnote",
+    able: "Read a no-guarantee footnote beside estimated excess tax on Notice.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-notice"],
+    implementationProblem:
+      "Right now I can't tell whether the estimated excess tax is an analyzed estimate or a promised reduction.",
+    implementation:
+      "On Notice — proof facts, you can now read a no-guarantee footnote beside estimated excess tax explaining that actual savings depend on the appeal outcome.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-065",
+    label: "Substantiation summary",
+    able: "Open a valuation substantiation summary showing data date, methodology, and reviewer status.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-notice"],
+    implementationProblem:
+      "Right now I can't see whether Trim analyzed my parcel before showing a quantified estimate.",
+    implementation:
+      "On Notice — proof facts, you can now open a substantiation summary showing roll date, methodology, evidence inputs, and reviewer status for the estimate.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-066",
+    label: "Manual county search instructions",
+    able: "Copy the exact parcel/account identifier and read county-specific search instructions.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-trust", "trim-ct-owner-notice"],
+    implementationProblem:
+      "Right now I can't reproduce Trim's county-record lookup when the official portal needs a specific account format.",
+    implementation:
+      "On Notice — trust strip, you can now copy the county-formatted parcel/account identifier and read manual search instructions for the official CAD portal.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-067",
+    label: "Delayed ACH authorization explanation",
+    able: "Read delayed ACH authorization terms before saving a payment method for post-reduction billing.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-authorize", "trim-ct-owner-invoice"],
+    implementationProblem:
+      "Right now I can't understand what amount, timing, revocation path, or notice applies if I authorize ACH before the reduction is known.",
+    implementation:
+      "On Authorize block, you can now read delayed ACH authorization terms before saving a payment method for post-reduction billing.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-068",
+    label: "Stored-card delayed charge terms",
+    able: "Read stored-card delayed charge terms with descriptor, advance notice, and cancellation path.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-authorize", "trim-ct-owner-invoice"],
+    implementationProblem:
+      "Right now I can't tell how a card on file will be used after documented savings or how to revoke it.",
+    implementation:
+      "On Authorize block, you can now read stored-card delayed charge terms with charge descriptor, advance notice, receipt, and cancellation path.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-069",
+    label: "Fee survival clause summary",
+    able: "Read the fee-survival clause for sale, transfer, closing, or ownership change during the protested year.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-authorize", "trim-ct-owner-invoice"],
+    implementationProblem:
+      "Right now I can't tell whether Trim's earned fee survives if the parcel sells before the county certifies the reduction.",
+    implementation:
+      "On Authorize block, you can now read a fee-survival clause summary covering sale, transfer, closing, or ownership change during the protested tax year.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-070",
+    label: "Annual cancellation deadline",
+    able: "Read the standing-program cancellation deadline and invoice survival for already-filed years.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-authorize", "trim-ct-owner-status", "trim-ct-owner-invoice"],
+    implementationProblem:
+      "Right now I can't see when to cancel future-year representation or whether already-filed years remain billable.",
+    implementation:
+      "On Authorize block, you can now read the annual cancellation deadline and invoice-survival rule for years where Trim already filed or performed.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-071",
+    label: "Invoice addressee and AP delegate",
+    able: "Confirm invoice addressee and optional AP delegate before authorization completes.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-authorize", "trim-ct-owner-invoice"],
+    implementationProblem:
+      "Right now I can't route the future Trim invoice to the right entity, property manager, or AP contact before signing.",
+    implementation:
+      "On Authorize block, you can now confirm invoice addressee and optional AP delegate before authorization completes.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-072",
+    label: "Signer authority warranty",
+    able: "Read and accept a signer authority warranty for LLC, partnership, trust, or manager signers.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-authorize", "trim-ct-owner-consent"],
+    implementationProblem:
+      "Right now I can't document why the signer has authority to bind the owning entity.",
+    implementation:
+      "On Authorize block, you can now read and accept a signer authority warranty tied to entity type and signer title.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-073",
+    label: "Minimum-fee or flat-fee exception disclosure",
+    able: "Read any minimum-fee or flat-fee exception before signing the contingency authorization.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-authorize"],
+    implementationProblem:
+      "Right now I can't tell whether the no-reduction/no-fee promise has any minimum-fee or flat-fee exception.",
+    implementation:
+      "On Authorize block, you can now read any minimum-fee or flat-fee exception before signing the contingency authorization.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-074",
+    label: "Invoice proof package",
+    able: "Open the invoice proof package with signed agreement, outcome proof, corrected value, tax-rate source, and calculation worksheet.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-invoice", "trim-ct-owner-reduction"],
+    implementationProblem:
+      "Right now I can't verify the invoice against official reduction proof and the savings calculation in one place.",
+    implementation:
+      "On Invoice fact, you can now open the invoice proof package with signed agreement, final order or corrected value, tax-rate source, and calculation worksheet.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-075",
+    label: "Rate assumption explainer",
+    able: "Read whether savings math uses prior-year, current-year, taxing-unit, or exemption-adjusted rate.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-reduction", "trim-ct-owner-invoice"],
+    implementationProblem:
+      "Right now I can't tell why Trim's savings calculation may use a different tax rate than the bill I am holding.",
+    implementation:
+      "On Reduction fact, you can now read the rate assumption explainer showing prior-year, current-year, taxing-unit, or exemption-adjusted rate selection.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-076",
+    label: "Escrow felt-win timeline",
+    able: "Read a timeline from reduction through corrected bill, servicer review, refund, credit, or lower future escrow payment.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-reduction", "trim-ct-owner-status", "trim-ct-owner-invoice"],
+    implementationProblem:
+      "Right now I can't understand why a documented win may not feel like cash immediately when escrow or lender reserves are involved.",
+    implementation:
+      "On Reduction fact, you can now read an escrow felt-win timeline from appeal decision through corrected tax obligation, servicer or lender review, and refund, credit, or lower future payment.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-077",
+    label: "Servicer notice packet",
+    able: "Download a servicer notice packet after reduction for escrow reanalysis or information request.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-reduction", "trim-ct-owner-upload"],
+    implementationProblem:
+      "Right now I can't give my servicer a clean packet with parcel, loan, corrected value, and appeal proof after a win.",
+    implementation:
+      "On Reduction fact, you can now download a servicer notice packet for escrow reanalysis or information request, including parcel ID, tax year, corrected value, and appeal proof.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-078",
+    label: "Off-cycle escrow request guidance",
+    able: "Open off-cycle escrow request guidance explaining documentation, discretion, and annual-analysis fallback.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-status", "trim-ct-owner-reduction"],
+    implementationProblem:
+      "Right now I can't tell whether I can ask the servicer to reanalyze escrow before the next annual cycle.",
+    implementation:
+      "On Status facts, you can now open off-cycle escrow request guidance explaining documentation requirements, servicer discretion, and annual-analysis fallback date.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-079",
+    label: "Escrow shortage explainer",
+    able: "Read why documented tax savings may first reduce an escrow shortage instead of lowering the monthly payment.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-reduction", "trim-ct-owner-invoice"],
+    implementationProblem:
+      "Right now I can't reconcile documented tax savings with a servicer statement that still shows a shortage or unchanged payment.",
+    implementation:
+      "On Reduction fact, you can now read an escrow shortage explainer separating gross tax savings from the net refund, credit, or payment change the servicer shows.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "owner-furnish-080",
+    label: "Private-vendor dunning disclaimer",
+    able: "Read a private-vendor disclaimer on invoice reminders so collections never resemble a county tax demand.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-owner-invoice"],
+    implementationProblem:
+      "Right now I can't tell from a reminder whether Trim is collecting a private contingency invoice or sending a government-like tax demand.",
+    implementation:
+      "On Invoice fact, you can now read a private-vendor dunning disclaimer on invoice reminders, with proof links and dispute path beside the payment action.",
+    implementationPlant: "not_done",
+  },
 ];

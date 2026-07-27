@@ -594,4 +594,364 @@ export const OPERATOR_FURNISH: FurnishItem[] = [
       "On Clients, you can now see an escrow/lender badge on portfolio rows where the reduction benefit is expected to flow through a servicer rather than direct client cash.",
     implementationPlant: "not_done",
   },
+  {
+    id: "op-furnish-051",
+    label: "Solicitation copy review queue",
+    able: "Filter Exception queue to cases held for solicitation copy review.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-exceptions", "trim-ct-op-audit"],
+    implementationProblem:
+      "Right now I can't see which parcel-specific notices are held because copy may imply a guaranteed result or government affiliation.",
+    implementation:
+      "On Exception queue, you can now filter to solicitation copy review cases with blocked phrase, reviewer, and required correction before outreach resumes.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-052",
+    label: "Claim substantiation file status",
+    able: "Read substantiation file status for every quantified notice claim before release.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-audit", "trim-ct-op-exceptions"],
+    implementationProblem:
+      "Right now I can't prove a parcel-specific estimate had prior analysis before the notice was sent.",
+    implementation:
+      "On Audit log, you can now read substantiation file status for each quantified notice claim: roll import, valuation inputs, reviewer approval, and released copy version.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-053",
+    label: "Outreach suppression ledger",
+    able: "See email, SMS, phone, and mail suppression status per Owner account on Clients.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-portfolio", "trim-ct-op-audit"],
+    implementationProblem:
+      "Right now I can't tell whether a decline, unsubscribe, STOP, or revocation should suppress future outreach across channels.",
+    implementation:
+      "On Clients, you can now read outreach suppression ledger status per Owner account, with channel, source event, timestamp, and audit reference.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-054",
+    label: "Launch gate by state and channel",
+    able: "Read launch-gate status per state and outreach channel in Jurisdiction & licensure.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-jurisdiction"],
+    implementationProblem:
+      "Right now I can't tell whether a state/channel pair is blocked for licensure, solicitation, attorney-review, or opt-out reasons.",
+    implementation:
+      "On Jurisdiction & licensure, you can now read launch-gate status per state and outreach channel with hard-block and compliance-review reasons.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-055",
+    label: "PTC max-10 cap warning",
+    able: "See a warning when a Texas PTC sponsor is nearing or at the max-10 supervised registrants cap.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-jurisdiction", "trim-ct-op-worker-dispatch"],
+    implementationProblem:
+      "Right now I can't spot when a senior PTC sponsor is near the Texas capacity cap before assigning more coverage.",
+    implementation:
+      "On Jurisdiction & licensure, you can now see a max-10 cap warning beside each sponsor and county roster before activating additional coverage.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-056",
+    label: "PTC CE and renewal status",
+    able: "Read CE and renewal status beside each licensed representative in Jurisdiction & licensure.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-jurisdiction"],
+    implementationProblem:
+      "Right now I can't see whether a named PTC representative is current on renewal and continuing-education status before filings use that name.",
+    implementation:
+      "On Jurisdiction & licensure, you can now read CE and renewal status beside each licensed representative in the county roster.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-057",
+    label: "County registered-agent roster",
+    able: "Expand a county row to see registered agent names, sponsor, registration number, and allowed appearance counties.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-jurisdiction"],
+    implementationProblem:
+      "Right now I can't confirm which human representative is valid for a county without checking a separate roster.",
+    implementation:
+      "On Jurisdiction & licensure, you can now expand a county row to see registered agent names, sponsor, registration number, and allowed appearance counties.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-058",
+    label: "PTC capacity trend",
+    able: "Read assigned-case load against PTC capacity by county and week.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-jurisdiction", "trim-ct-op-worker-dispatch"],
+    implementationProblem:
+      "Right now I can't tell whether next week's hearing load will exceed licensed representative capacity.",
+    implementation:
+      "On Worker dispatch, you can now read assigned-case load against PTC capacity by county and week before releasing new hearings to Workers.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-059",
+    label: "Appeal-window outreach scheduler",
+    able: "Schedule release batches by county appeal-window open date and copy-gate status.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-jurisdiction", "trim-ct-op-portfolio"],
+    implementationProblem:
+      "Right now I can't coordinate outreach release with the county appeal window and copy-gate clearance in one place.",
+    implementation:
+      "On Jurisdiction & licensure, you can now schedule release batches by county appeal-window open date and copy-gate status.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-060",
+    label: "County verification QA status",
+    able: "Read skeptical-owner replay status for county, parcel ID, owner name, situs, assessed value, and tax year.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-county-data", "trim-ct-op-audit"],
+    implementationProblem:
+      "Right now I can't confirm that a skeptical Owner can reproduce the notice facts on the official county site before launch.",
+    implementation:
+      "On County data health, you can now read verification QA status for county, parcel/account ID, owner/entity name, situs, assessed value, and tax year.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-061",
+    label: "CAD link capability registry",
+    able: "Read whether each county supports stable property deep links, search-only portals, session-bound URLs, or manual fallback.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-county-data"],
+    implementationProblem:
+      "Right now I can't tell which counties can safely receive direct property links without sending Owners to broken or session-bound URLs.",
+    implementation:
+      "On County data health, you can now read CAD link capability per county: stable deep link, search-only portal, session-bound URL, or manual fallback.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-062",
+    label: "Identifier formatter QA",
+    able: "Read county-specific parcel/account formatting rules and last QA result.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-county-data", "trim-ct-op-exceptions"],
+    implementationProblem:
+      "Right now I can't catch leading-zero, hyphen, suffix, or account-type formatting errors before they make notices feel fake.",
+    implementation:
+      "On County data health, you can now read identifier formatting rules and last QA result for each county's parcel, account, or geographic ID.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-063",
+    label: "CAMA parse anomaly queue",
+    able: "Filter Exception queue to CAMA schema and parse anomalies by county import.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-county-data", "trim-ct-op-exceptions"],
+    implementationProblem:
+      "Right now I can't separate CAMA schema drift from normal low-confidence valuation exceptions.",
+    implementation:
+      "On Exception queue, you can now filter to CAMA parse anomalies by county import, schema version, field, and affected parcel count.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-064",
+    label: "Comp coverage floor alert",
+    able: "See counties where qualifying comp count falls below the minimum evidence floor.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-county-data", "trim-ct-op-exceptions"],
+    implementationProblem:
+      "Right now I can't identify counties where thin comp coverage will make packet quality too weak for outreach or hearing.",
+    implementation:
+      "On County data health, you can now see a comp coverage floor alert with qualifying comp count, median vintage, and recommended hold/review action.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-065",
+    label: "PIA cost and fulfillment tracker",
+    able: "Read PIA fallback request cost, status, due date, and fulfillment notes per county.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-county-data"],
+    implementationProblem:
+      "Right now I can't plan county data coverage when a complete roll depends on a paid public-information request.",
+    implementation:
+      "On County data health, you can now read PIA fallback request cost, status, due date, and fulfillment notes per county.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-066",
+    label: "Suppressed notices by channel",
+    able: "Filter Exception queue to notices suppressed by mail, email, SMS, or phone rule.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-exceptions", "trim-ct-op-audit"],
+    implementationProblem:
+      "Right now I can't see which channel rule suppressed a notice or whether another compliant channel remains available.",
+    implementation:
+      "On Exception queue, you can now filter suppressed notices by channel rule with reason, fallback channel, and audit event.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-067",
+    label: "Collections escalation matrix",
+    able: "Read recommended next action for unpaid invoices by amount, proof strength, dispute status, and venue.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-collections"],
+    implementationProblem:
+      "Right now I can't decide when an unpaid commercial invoice should stay in dunning, move to demand, go to collections, or be written off.",
+    implementation:
+      "On Collections, you can now read the escalation matrix recommendation by invoice amount, proof strength, dispute status, venue, and expected recovery cost.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-068",
+    label: "ACH/card aging and revocation",
+    able: "Read payment authorization age, revocation status, validation state, and advance-notice requirement per invoice.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-collections"],
+    implementationProblem:
+      "Right now I can't tell whether a stored payment method is still enforceable before triggering post-reduction collection.",
+    implementation:
+      "On Collections, you can now read payment authorization age, revocation status, validation state, and advance-notice requirement per invoice.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-069",
+    label: "Invoice dispute reason taxonomy",
+    able: "Read standardized dispute reasons on Collections rows and route each to the matching proof path.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-collections"],
+    implementationProblem:
+      "Right now I can't distinguish tax-rate, exemption, escrow, partial-reduction, fee-percentage, or recurrence disputes without reading freeform support notes.",
+    implementation:
+      "On Collections, you can now read standardized invoice dispute reason and route each row to the matching proof path.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-070",
+    label: "Invoice proof readiness",
+    able: "See whether final order, corrected value, tax-rate source, signed agreement, and calculation worksheet are attached before invoicing.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-collections", "trim-ct-op-audit"],
+    implementationProblem:
+      "Right now I can't confirm an invoice has enough proof to survive Owner review or later collection scrutiny.",
+    implementation:
+      "On Collections, you can now see invoice proof readiness before generating an invoice: final order, corrected value, tax-rate source, signed agreement, and calculation worksheet.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-071",
+    label: "Escrow felt-win collection flag",
+    able: "See whether an invoice depends on refund, escrow credit, lower future payment, reserve adjustment, or documented liability only.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-collections", "trim-ct-op-portfolio"],
+    implementationProblem:
+      "Right now I can't tell whether an Owner will feel the win as cash, escrow credit, lower future payment, or lender reserve movement before dunning.",
+    implementation:
+      "On Collections, you can now read escrow felt-win flag per invoice: refund, escrow credit, lower future payment, reserve adjustment, or documented liability only.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-072",
+    label: "Fee-survival watchlist",
+    able: "See cases with sale, transfer, closing, or ownership-change signals before reduction certification.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-portfolio", "trim-ct-op-collections"],
+    implementationProblem:
+      "Right now I can't identify mid-sale cases where the fee-survival clause needs special invoice evidence.",
+    implementation:
+      "On Clients, you can now see a fee-survival watchlist for sale, transfer, closing, or ownership-change signals before reduction certification.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-073",
+    label: "AP delegate completeness",
+    able: "See whether invoice routing has deeded owner, signer, property manager, and AP delegate fields complete.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-portfolio", "trim-ct-op-collections"],
+    implementationProblem:
+      "Right now I can't catch missing AP delegate or invoice-addressee data until a successful reduction is ready to bill.",
+    implementation:
+      "On Clients, you can now see AP delegate completeness for deeded owner, signer, property manager, and invoice recipient before the case reaches Collections.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-074",
+    label: "Worker county capacity heatmap",
+    able: "Open capacity heatmap by county, hearing week, appearance mode, and available Worker count.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-worker-dispatch"],
+    implementationProblem:
+      "Right now I can't see county-level Worker capacity pressure before hearings pile up.",
+    implementation:
+      "On Worker dispatch, you can now open a capacity heatmap by county, hearing week, appearance mode, and available Worker count.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-075",
+    label: "Remote versus in-person capacity split",
+    able: "Read Worker capacity separately for remote, phone, written, and in-person hearings.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-worker-dispatch"],
+    implementationProblem:
+      "Right now I can't tell whether remote-capable Workers and in-person Workers are interchangeable for a hearing block.",
+    implementation:
+      "On Worker dispatch, you can now read Worker capacity separately for remote, phone, written, and in-person hearings.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-076",
+    label: "Worker reliability score",
+    able: "Read current-season reliability score from accept rate, timely outcome reports, no-shows, and cancellations.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-worker-dispatch"],
+    implementationProblem:
+      "Right now I can't evaluate Worker reliability with more than a freeform memory of no-shows and late reports.",
+    implementation:
+      "On Worker dispatch, you can now read current-season reliability score from accept rate, timely outcome reports, no-shows, and cancellations.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-077",
+    label: "No-show exception auto-create",
+    able: "See no-show or missed-hearing reports auto-create Exception queue rows.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-worker-dispatch", "trim-ct-op-exceptions"],
+    implementationProblem:
+      "Right now I can't trust that a Worker no-show automatically becomes an Operator recovery task.",
+    implementation:
+      "On Worker dispatch, you can now see no-show or missed-hearing reports auto-create Exception queue rows with recovery owner and deadline.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-078",
+    label: "County checklist stale queue",
+    able: "Filter Exception queue to Worker-flagged stale county checklist items.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-exceptions", "trim-ct-op-worker-dispatch"],
+    implementationProblem:
+      "Right now I can't see which county checklists Workers flagged as wrong after hearing day.",
+    implementation:
+      "On Exception queue, you can now filter to Worker-flagged stale county checklist items with county, room/link detail, and suggested correction.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-079",
+    label: "Outcome report review queue",
+    able: "Review Worker-submitted outcomes that are missing proof, values, continued date, or board order reference.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-worker-dispatch", "trim-ct-op-exceptions"],
+    implementationProblem:
+      "Right now I can't find incomplete hearing outcome reports before they corrupt reduction, denial, or requeue state.",
+    implementation:
+      "On Worker dispatch, you can now open Outcome report review queue for submissions missing proof, values, continued date, or board order reference.",
+    implementationPlant: "not_done",
+  },
+  {
+    id: "op-furnish-080",
+    label: "Hearing packet readiness gate",
+    able: "Hold Worker dispatch until packet, authority proof, evidence submission, and county checklist are ready.",
+    status: "deferred",
+    surfaceIds: ["trim-ct-op-worker-dispatch", "trim-ct-op-exceptions"],
+    implementationProblem:
+      "Right now I can't prevent a hearing from being released to Workers when packet, authority, evidence, or checklist readiness is incomplete.",
+    implementation:
+      "On Worker dispatch, you can now hold release behind packet, authority proof, evidence submission, and county checklist readiness gate.",
+    implementationPlant: "not_done",
+  },
 ];
