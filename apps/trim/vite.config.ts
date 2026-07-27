@@ -41,9 +41,42 @@ function prototypeBlueprintIsolatedSpa(): Plugin {
   };
 }
 
+/**
+ * Serve the isolated Fluent UI document for /prototype-fluent.
+ * Keeps Fluent UI's global CSS out of the main SPA and Blueprint document —
+ * both run distinct global style systems; they must never share a document.
+ */
+function prototypeFluentIsolatedSpa(): Plugin {
+  const isFluentPath = (raw: string) =>
+    raw === "/prototype-fluent" ||
+    raw === "/prototype-fluent/" ||
+    (/^\/prototype-fluent\//.test(raw) && !path.extname(raw));
+  const rewrite = (req: { url?: string }) => {
+    const raw = req.url?.split("?")[0] ?? "";
+    if (isFluentPath(raw)) {
+      req.url = "/prototype-fluent.html";
+    }
+  };
+  return {
+    name: "prototype-fluent-isolated-spa",
+    configureServer(server) {
+      server.middlewares.use((req, _res, next) => {
+        rewrite(req);
+        next();
+      });
+    },
+    configurePreviewServer(server) {
+      server.middlewares.use((req, _res, next) => {
+        rewrite(req);
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig({
   // Tailwind must run before Vite's CSS postcss-import resolves bare @import "tailwindcss"
-  plugins: [tailwindcss(), react(), prototypeBlueprintIsolatedSpa()],
+  plugins: [tailwindcss(), react(), prototypeBlueprintIsolatedSpa(), prototypeFluentIsolatedSpa()],
   resolve: {
     alias: {
       // ESM-safe root (package.json "type": "module") — do not rely on __dirname alone
@@ -55,6 +88,7 @@ export default defineConfig({
       input: {
         main: path.resolve(rootDir, "index.html"),
         blueprint: path.resolve(rootDir, "prototype-blueprint.html"),
+        fluent: path.resolve(rootDir, "prototype-fluent.html"),
       },
     },
   },

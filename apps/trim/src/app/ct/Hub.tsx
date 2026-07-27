@@ -100,6 +100,23 @@ export function Hub() {
             </a>
           </CtRow>
         </CtPanel>
+
+        <CtPanel title="Also in this workspace">
+          <CtRow last onClick={undefined}>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 13, fontWeight: 500, color: t.ink }}>Fluent UI remake</div>
+              <div style={{ fontSize: 12, color: t.label, marginTop: 3 }}>
+                Isolated document — Fluent UI React v9. Separate build, separate document.
+              </div>
+            </div>
+            <a
+              href="/prototype-fluent"
+              style={{ fontSize: 12, fontWeight: 600, color: t.accent, textDecoration: "none" }}
+            >
+              Open →
+            </a>
+          </CtRow>
+        </CtPanel>
       </div>
     </div>
   );
