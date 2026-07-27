@@ -126,6 +126,6 @@ Ranked by how much they change the existing Register (`docs/register/*`).
 
 ## Seat 11 greenlight (was open item)
 
-**`collections-ar` — collections/AR specialist.** Greenlit because the room confirmed invoice-after-reduction risk with **zero sourced practice** on how contingency firms actually collect. Pass 1 + Pass 2 source: dispute rates, dunning language that works, ACH/card authorization norms, industry bad-debt %, invoice-after-benefit workflows. Mid-sale parcel transfer is **one fee-clause question among ~25**, not a seat — write "fee obligation survives transfer / attaches at filing"; skip the ceremony.
+**`collections-ar` — collections/AR specialist.** Greenlit because the room confirmed invoice-after-reduction risk with **zero sourced practice** on how contingency firms actually collect. Pass 1 + Pass 2 landed in `docs/sme/pass1/collections-ar.md` and `docs/sme/pass2/collections-ar.md`: dispute rates, dunning language that works, ACH/card authorization norms, industry bad-debt %, invoice-after-benefit workflows. Mid-sale parcel transfer is **one fee-clause question among ~25**, not a seat — write "fee obligation survives transfer / attaches at filing"; skip the ceremony.
 
-See `pass1/collections-ar.md` / `pass2/collections-ar.md` (in flight when this note lands).
+See `pass1/collections-ar.md` / `pass2/collections-ar.md`.
