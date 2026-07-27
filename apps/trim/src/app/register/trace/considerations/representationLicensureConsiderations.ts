@@ -4,7 +4,15 @@
  */
 import type { SmeItem } from "../smeTypes";
 
-export const REPRESENTATION_LICENSURE_ITEMS: SmeItem[] = [
+const withImplementation = (items: SmeItem[]): SmeItem[] =>
+  items.map((item) => ({
+    ...item,
+    implementationProblem: item.consideration,
+    implementation: `On linked CT surfaces, you can now ${item.solution}`,
+    implementationPlant: "not_done" as const,
+  }));
+
+export const REPRESENTATION_LICENSURE_ITEMS: SmeItem[] = withImplementation([
   {
     id: "lic-01",
     consideration:
@@ -393,4 +401,4 @@ export const REPRESENTATION_LICENSURE_ITEMS: SmeItem[] = [
     implementsSurfaceIds: ["trim-ct-op-rollout-gate", "trim-ct-op-jurisdiction", "trim-ct-op-licensed-roster"],
     status: "deferred",
   },
-];
+]);
