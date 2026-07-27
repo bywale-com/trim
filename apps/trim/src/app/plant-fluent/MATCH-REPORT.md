@@ -22,9 +22,13 @@ Generated: 2026-07-27
 
 | Concept | Disposition | Resolved to | Tokens used | Notes |
 |---|---|---|---|---|
-| Persona cards with badge counts | `matched` | `Card` (clickable) | `colorNeutralBackground1`, `colorSubtleBackgroundHover`, `colorNeutralStroke1` | Card hover wash: element has fill at rest → `colorSubtleBackgroundHover` (no-fill-at-rest family — the Card itself has a background, but hover fill is neutral subtle family) |
+| Persona cards with badge counts | `matched` | Absolute `<a href="/prototype-fluent/{owner,operator,worker}" aria-label="…">` wrapping `Card` | `colorNeutralBackground1`, `colorNeutralBackground1Hover`, `colorNeutralStroke1` | Persona labels are Owner / Operator / Worker and resolve to the isolated Fluent routes. Card hover ambiguity resolved as has-fill-at-rest. |
 | Status badge counts | `matched` | `Badge appearance="tint"` | `colorBrandBackground2` (tint) | tint appearance confirmed for inline status |
 | Cross-document links | `synthesize` | Plain `<a href>` | `colorBrandForeground1` | Isolation rule; SPA Navigate not used across document boundaries |
+
+### Register CT panel context
+
+`RegisterClickThroughPanel` now mounts Trim CT desks for reviewers: embedded `OwnerApp`, embedded `WorkerApp`, and an embedded Trim Operator composition from the CT operator modules. This is context only for the Fluent remake; `plant-fluent` still imports no `src/app/ct/` code.
 
 ---
 
@@ -203,6 +207,8 @@ Generated: 2026-07-27
 ## Ambiguity queue (blocked-pending-human-decision)
 
 ### A-1: Decline button destructive red color
+**Status:** Unresolved — still needs human/brand decision.
+
 **Question:** Should the "Decline this protest" button use `colorPaletteRedForeground3` (inline) or just a default `appearance="subtle"` without any red accent?
 
 **Current choice:** `colorPaletteRedForeground3` inline — matched Input invalid-state precedent for red.
@@ -217,19 +223,23 @@ Generated: 2026-07-27
 **Recommended:** Option 1 for now (consistent with Input precedent). Escalate if brand review requires Option 2.
 
 ### A-2: Hover wash family for Card (persona picker)
+**Status:** Resolved in this pass — use `colorNeutralBackground1Hover`.
+
 **Question:** Cards have `colorNeutralBackground1` at rest — should hover wash be `colorNeutralBackground1Hover` (has-fill-at-rest family) or `colorSubtleBackgroundHover` (no-fill-at-rest)?
 
-**Current choice:** `colorSubtleBackgroundHover` — treated Card as a "no visible fill at rest" element.
+**Current choice:** `colorNeutralBackground1Hover` — Card has a neutral background at rest, so it uses the filled-surface hover family.
 
 **Skill reference:** archaeology.md ambiguities — "hover wash has two families depending on resting-state fill"
 
-**Note:** Card technically has a background. This should arguably use `colorNeutralBackground1Hover`. **NEEDS human decision.**
+**Note:** Resolved to Option 2 because Card has a background at rest.
 
 **Options:**
-1. `colorSubtleBackgroundHover` (current — treats Card as a plain container)
-2. `colorNeutralBackground1Hover` (has-fill-at-rest interpretation — Card's background color is `colorNeutralBackground1`, so it has fill at rest)
+1. `colorSubtleBackgroundHover` (previous choice — treated Card as a plain container)
+2. `colorNeutralBackground1Hover` (current choice — Card's background color is `colorNeutralBackground1`, so it has fill at rest)
 
 ### A-3: Brand vs system blue for active persona in AppBar
+**Status:** Resolved — no human decision needed.
+
 **Question:** The active Tab in the persona switch TabList uses a brand underline via `colorCompoundBrandStroke`. Should this be the main brand blue or a more neutral selection indicator?
 
 **Current choice:** Fluent TabList manages this internally via its own tokens — not explicitly overridden. Tab component's active state uses Fluent's default which is `colorCompoundBrandStroke`.

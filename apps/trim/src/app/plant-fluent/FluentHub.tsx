@@ -9,7 +9,6 @@ import {
   makeStyles,
   tokens,
 } from "@fluentui/react-components";
-import { useNavigate } from "react-router";
 import { FluentShell } from "./FluentShell";
 import { PROTEST_CASES } from "./data/protestCases";
 import { TRIM_JURISDICTIONS } from "./data/jurisdictions";
@@ -42,10 +41,14 @@ const useStyles = makeStyles({
     flexDirection: "column",
     gap: tokens.spacingVerticalS,
   },
+  personaLink: {
+    color: "inherit",
+    textDecoration: "none",
+  },
   personaCard: {
     cursor: "pointer",
     "&:hover": {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: tokens.colorNeutralBackground1Hover,
     },
   },
   cardContent: {
@@ -102,7 +105,6 @@ const availableAssignments = WORKER_QUEUE.filter((a) => a.status === "available"
 
 export function FluentHub() {
   const styles = useStyles();
-  const navigate = useNavigate();
 
   return (
     <FluentShell>
@@ -128,78 +130,75 @@ export function FluentHub() {
               Personas
             </Text>
             <div className={styles.personaCards}>
-              <Card
-                className={styles.personaCard}
-                onClick={() => navigate("/owner")}
-              >
-                <div className={styles.cardContent}>
-                  <div className={styles.cardBody}>
-                    <Text weight="semibold" size={400}>
-                      Owner
-                    </Text>
-                    <Text size={200} style={{ color: tokens.colorNeutralForeground2 }}>
-                      Notice, consent, authorize, upload, status, reduction, invoice, decline.
-                    </Text>
-                  </div>
-                  <div className={styles.badgeRow}>
-                    <Badge appearance="tint" color="informative">
-                      {PROTEST_CASES.length} cases
-                    </Badge>
-                    {hearingQueued > 0 && (
-                      <Badge appearance="tint" color="warning">
-                        {hearingQueued} hearing queued
+              <a href="/prototype-fluent/owner" className={styles.personaLink} aria-label="Owner">
+                <Card className={styles.personaCard}>
+                  <div className={styles.cardContent}>
+                    <div className={styles.cardBody}>
+                      <Text weight="semibold" size={400}>
+                        Owner
+                      </Text>
+                      <Text size={200} style={{ color: tokens.colorNeutralForeground2 }}>
+                        Notice, consent, authorize, upload, status, reduction, invoice, decline.
+                      </Text>
+                    </div>
+                    <div className={styles.badgeRow}>
+                      <Badge appearance="tint" color="informative">
+                        {PROTEST_CASES.length} cases
                       </Badge>
-                    )}
+                      {hearingQueued > 0 && (
+                        <Badge appearance="tint" color="warning">
+                          {hearingQueued} hearing queued
+                        </Badge>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </a>
 
-              <Card
-                className={styles.personaCard}
-                onClick={() => navigate("/operator")}
-              >
-                <div className={styles.cardContent}>
-                  <div className={styles.cardBody}>
-                    <Text weight="semibold" size={400}>
-                      Operator
-                    </Text>
-                    <Text size={200} style={{ color: tokens.colorNeutralForeground2 }}>
-                      Portfolio, jurisdiction/PTC, exceptions, audit, collections, county data, dispatch.
-                    </Text>
-                  </div>
-                  <div className={styles.badgeRow}>
-                    <Badge appearance="tint" color="informative">
-                      {PROTEST_CASES.length} in book
-                    </Badge>
-                    {blockedJurisdictions > 0 && (
-                      <Badge appearance="tint" color="danger">
-                        {blockedJurisdictions} jurisdiction blocked
+              <a href="/prototype-fluent/operator" className={styles.personaLink} aria-label="Operator">
+                <Card className={styles.personaCard}>
+                  <div className={styles.cardContent}>
+                    <div className={styles.cardBody}>
+                      <Text weight="semibold" size={400}>
+                        Operator
+                      </Text>
+                      <Text size={200} style={{ color: tokens.colorNeutralForeground2 }}>
+                        Portfolio, jurisdiction/PTC, exceptions, audit, collections, county data, dispatch.
+                      </Text>
+                    </div>
+                    <div className={styles.badgeRow}>
+                      <Badge appearance="tint" color="informative">
+                        {PROTEST_CASES.length} in book
                       </Badge>
-                    )}
+                      {blockedJurisdictions > 0 && (
+                        <Badge appearance="tint" color="danger">
+                          {blockedJurisdictions} jurisdiction blocked
+                        </Badge>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </a>
 
-              <Card
-                className={styles.personaCard}
-                onClick={() => navigate("/worker")}
-              >
-                <div className={styles.cardContent}>
-                  <div className={styles.cardBody}>
-                    <Text weight="semibold" size={400}>
-                      Worker
-                    </Text>
-                    <Text size={200} style={{ color: tokens.colorNeutralForeground2 }}>
-                      Hearing queue, case packet, accept, argue, report outcome, pay status.
-                    </Text>
+              <a href="/prototype-fluent/worker" className={styles.personaLink} aria-label="Worker">
+                <Card className={styles.personaCard}>
+                  <div className={styles.cardContent}>
+                    <div className={styles.cardBody}>
+                      <Text weight="semibold" size={400}>
+                        Worker
+                      </Text>
+                      <Text size={200} style={{ color: tokens.colorNeutralForeground2 }}>
+                        Hearing queue, case packet, accept, argue, report outcome, pay status.
+                      </Text>
+                    </div>
+                    <div className={styles.badgeRow}>
+                      <Badge appearance="tint" color="success">
+                        {availableAssignments} available
+                      </Badge>
+                    </div>
                   </div>
-                  <div className={styles.badgeRow}>
-                    <Badge appearance="tint" color="success">
-                      {availableAssignments} available
-                    </Badge>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </a>
             </div>
           </div>
 
