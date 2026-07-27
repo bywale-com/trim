@@ -1,0 +1,47 @@
+/**
+ * Prototype-blueprint layout.
+ * Blueprint tokens come from @blueprintjs/core CSS; shell is synthesized
+ * (Navbar + Card grid) — no core AppShell (see blueprint-composition-patterns).
+ */
+
+.plant-blueprint-root,
+.plant-blueprint-shell {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  min-height: 100vh;
+  background: var(--bp-surface-background-color-default-rest, #ffffff);
+  color: var(--bp-typography-color-default-rest, #1c2127);
+}
+
+.bp6-dark.plant-blueprint-root,
+.bp6-dark .plant-blueprint-shell,
+.plant-blueprint-root.bp6-dark,
+.plant-blueprint-shell.bp6-dark {
+  background: #252a31;
+  color: #f6f7f9;
+}
+
+.bp-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bp-stack-h {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bp-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.bp-muted {
+  opacity: 0.7;
+  font-size: 12px;
+}
