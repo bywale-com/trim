@@ -1,7 +1,7 @@
 /**
- * Trim SME machine twin — 10 seats matching docs/sme/ROSTER.md.
+ * Trim SME machine twin — 11 seats matching docs/sme/ROSTER.md plus filled SME additions.
  * consideration → <mechanism> so that <purpose> → refs → CT.
- * Consideration arrays are stubs (1 item each); a follow-up agent fills depth.
+ * Consideration arrays are filled per SME seat as source passes land.
  */
 import { LICENSED_PTC_PRACTITIONER_ITEMS } from "./considerations/licensedPtcPractitionerConsiderations";
 import { VALUATION_MASS_APPRAISAL_ITEMS } from "./considerations/valuationMassAppraisalConsiderations";
@@ -13,6 +13,7 @@ import { COUNTY_DATA_ITEMS } from "./considerations/countyDataConsiderations";
 import { MORTGAGE_ESCROW_ITEMS } from "./considerations/mortgageEscrowConsiderations";
 import { TAX_ACCOUNTING_ITEMS } from "./considerations/taxAccountingConsiderations";
 import { TRUST_ANTI_SCAM_ITEMS } from "./considerations/trustAntiScamConsiderations";
+import { COLLECTIONS_AR_ITEMS } from "./considerations/collectionsArConsiderations";
 import type { SmeItem, SmePersona } from "./smeTypes";
 
 export type { SmeItem, SmePersona, SmeStatus } from "./smeTypes";
@@ -98,6 +99,15 @@ export const SME_PERSONAS: SmePersona[] = [
     whyExists:
       "Activation dies on 'is this a scam?'. Property tax solicitation letters are heavily impersonated (Owlue already generates coverage); this seat gives Notice — trust strip real content instead of empty structure.",
     items: TRUST_ANTI_SCAM_ITEMS,
+  },
+  {
+    id: "collections-ar",
+    label: "Collections / AR Specialist",
+    domain:
+      "Contingency fee collection after reduction; invoicing, dunning, payment rails, disputes, write-offs, and entity payor risk",
+    whyExists:
+      "Without sourced practice, invoicing/dunning invents from analogy. This seat ties post-reduction billing, payment authorization, disputes, dunning, and write-off evidence to published property-tax collection practice.",
+    items: COLLECTIONS_AR_ITEMS,
   },
 ];
 
