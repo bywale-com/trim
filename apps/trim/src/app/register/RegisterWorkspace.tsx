@@ -1,8 +1,8 @@
 /**
  * Register workspace — theory side panel + Click-through as its own panel.
  *
- * Process rail (locked): World → Personas → SME → Furnish.
- * CTO / Wiring / Flows deferred. How lives inside Personas later.
+ * Process rail: World → Personas → SME → Furnish → Wiring.
+ * How lives inside Personas. CT inhabit is the right panel.
  */
 import type { ReactNode } from "react";
 import { NavLink, Outlet } from "react-router";
@@ -15,6 +15,7 @@ const SECTIONS = [
   { id: "personas", label: "Personas", to: "/register/personas" },
   { id: "sme", label: "SME", to: "/register/sme" },
   { id: "furnish", label: "Furnish", to: "/register/furnish" },
+  { id: "wiring", label: "Wiring", to: "/register/wiring" },
 ];
 
 const RAIL_W = 200;
@@ -56,7 +57,7 @@ export function RegisterWorkspace() {
         >
           <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
             <span style={{ fontSize: 13, fontWeight: 700, color: t.ink, letterSpacing: "-0.01em" }}>
-              Trove B2B
+              Trim
             </span>
             <span style={{ fontSize: 10.5, color: t.muted }}>Register</span>
           </div>

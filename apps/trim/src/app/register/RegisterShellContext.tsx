@@ -1,6 +1,6 @@
 /**
  * Register shell — CT is its own panel (default on), theory lives in the side
- * pane. Process order rail: World → Personas → SME → Furnish (CTO later).
+ * pane. Process order rail: World → Personas → SME → Furnish → Wiring.
  */
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
 

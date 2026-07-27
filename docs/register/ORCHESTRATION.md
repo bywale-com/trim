@@ -29,7 +29,7 @@ npx tsx scripts/audit-sme-plant-gap.ts
 - [x] HowUiRef has surfaceId join
 - [x] Wiring exists (not a comment)
 - [x] Product owns docs/register + docs/sme (not only omcoda-hq.vercel.app)
-- [ ] No Translation before CT verify
+- [x] No Translation before CT verify (CT green before Fluent)
 
 ## Reference
 
@@ -37,3 +37,13 @@ npx tsx scripts/audit-sme-plant-gap.ts
 - Exemplar: trove-b2b (configs/types/joins — not domain)
 - Anti-exemplar: prior trim ceremony without depth
 - Seed source: `docs/dossier/Trim_Build.pdf`
+
+## Post-gate cleanup (this branch)
+
+- [x] Register chrome titled Trim
+- [x] Register CT mounts Owner / Operator / Worker Trim desks
+- [x] `/register/wiring` opens Wiring pane
+- [x] Legacy `/ct/business` `/ct/agency` redirect to Trim desks
+- [x] Wiring twin + Trim protest flows (spec, not live integrations)
+- [x] Furnish 80/80/80 Owner/Operator/Worker
+- [x] Fluent plant polished; Register CT inhabit cut over

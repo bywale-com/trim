@@ -1,36 +1,40 @@
 /**
- * Gray DS-I hub at `/ct`. Links to the three personas and notes the isolated
- * Blueprint document via a plain `<a href>` (never SPA `Link`) so its global
- * @blueprintjs CSS never loads inside this bundle.
+ * Gray DS-I hub at `/ct`. Links to the three Trim personas and the isolated
+ * Fluent remake via a plain `<a href>` (never SPA `Link`) so Fluent CSS
+ * never loads inside this bundle.
  */
 import { Link } from "react-router";
 import { ctPalette as t, CtPanel, CtRow, CtStatusTag } from "../shared/primitives";
-import { BUSINESS_CASES, RECOVERY_CASES } from "./data/cases";
-import { JURISDICTIONS } from "./data/jurisdictions";
+import { PROTEST_CASES } from "./trim-data/protestCases";
+import { TRIM_JURISDICTIONS } from "./trim-data/trimJurisdictions";
+import { WORKER_QUEUE } from "./trim-data/workerQueue";
 
-const kickedBackCount = RECOVERY_CASES.filter((c) => c.status === "kicked_back").length;
-const blockedCount = JURISDICTIONS.filter((j) => j.status === "blocked").length;
+const exceptionCount = PROTEST_CASES.filter(
+  (c) => c.status === "hearing_queued" || c.status === "denied" || c.status === "blocked_jurisdiction",
+).length;
+const blockedCount = TRIM_JURISDICTIONS.filter((j) => j.rolloutGate === "blocked" || j.status === "blocked").length;
+const availableHearings = WORKER_QUEUE.filter((a) => a.status === "available").length;
 
 const PERSONAS = [
   {
     id: "owner",
     to: "/ct/owner",
     label: "Owner",
-    fact: `One owning entity · ${BUSINESS_CASES.length} protest cases — Notice through reduction + invoice.`,
+    fact: `One owning entity · ${PROTEST_CASES.length} protest cases — Notice through reduction + invoice.`,
     tag: "Owner seat",
   },
   {
     id: "operator",
     to: "/ct/operator",
     label: "Operator",
-    fact: `Clients · Work · Settings · ${kickedBackCount} exception · ${blockedCount} jurisdictions blocked.`,
+    fact: `Clients · Work · Settings · ${exceptionCount} needing attention · ${blockedCount} jurisdictions blocked.`,
     tag: "Operator seat",
   },
   {
     id: "worker",
     to: "/ct/worker",
     label: "Worker",
-    fact: "Hearing queue · Case packet · Accept · Argue · Report outcome · Pay status.",
+    fact: `Hearing queue · ${availableHearings} available · Packet → Argue → Report → Pay.`,
     tag: "Worker seat",
   },
 ];
@@ -71,42 +75,22 @@ export function Hub() {
         </CtPanel>
 
         <CtPanel title="Also in this workspace">
-          <CtRow last onClick={undefined}>
+          <CtRow onClick={undefined}>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 13, fontWeight: 500, color: t.ink }}>Register</div>
               <div style={{ fontSize: 12, color: t.label, marginTop: 3 }}>
-                World → Personas → SME → Furnish beside the Click-through panel.
+                World → Personas → SME → Furnish → Wiring beside the Click-through panel.
               </div>
             </div>
             <Link to="/register" style={{ fontSize: 12, fontWeight: 600, color: t.accent, textDecoration: "none" }}>
               Open →
             </Link>
           </CtRow>
-        </CtPanel>
-
-        <CtPanel title="Also in this workspace">
-          <CtRow last onClick={undefined}>
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 13, fontWeight: 500, color: t.ink }}>Blueprint restyle</div>
-              <div style={{ fontSize: 12, color: t.label, marginTop: 3 }}>
-                Isolated document — separate build, not part of this SPA.
-              </div>
-            </div>
-            <a
-              href="http://localhost:5181/prototype-blueprint"
-              style={{ fontSize: 12, fontWeight: 600, color: t.accent, textDecoration: "none" }}
-            >
-              Open →
-            </a>
-          </CtRow>
-        </CtPanel>
-
-        <CtPanel title="Also in this workspace">
           <CtRow last onClick={undefined}>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 13, fontWeight: 500, color: t.ink }}>Fluent UI remake</div>
               <div style={{ fontSize: 12, color: t.label, marginTop: 3 }}>
-                Isolated document — Fluent UI React v9. Separate build, separate document.
+                Isolated document — Fluent UI React v9 translation of this plant.
               </div>
             </div>
             <a

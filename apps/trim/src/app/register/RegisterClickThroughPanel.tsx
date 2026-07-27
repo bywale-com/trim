@@ -1,18 +1,17 @@
 /**
  * Click-through panel — embedded Owner / Operator / Worker desks inside Register.
- * CT plant is deferred — Owner and Operator still render legacy Trove screens
- * until the next pass builds Trim CT screens.
+ * Mounts Trim CT plants (not legacy Trove Business/Agency).
  */
 import { useEffect, useState, type ReactNode } from "react";
-import { AgencyAppeals } from "../ct/agency/AgencyAppeals";
-import { AgencyAudit } from "../ct/agency/AgencyAudit";
-import { AgencyClients } from "../ct/agency/AgencyClients";
-import { AgencyExceptions } from "../ct/agency/AgencyExceptions";
-import { AgencyInbound } from "../ct/agency/AgencyInbound";
-import { AgencyJurisdiction } from "../ct/agency/AgencyJurisdiction";
-import { AgencyReconciling } from "../ct/agency/AgencyReconciling";
-import { AgencyStateAdmin } from "../ct/agency/AgencyStateAdmin";
-import { BusinessApp } from "../ct/business/BusinessApp";
+import { OperatorAudit } from "../ct/operator/OperatorAudit";
+import { OperatorClients } from "../ct/operator/OperatorClients";
+import { OperatorCollections } from "../ct/operator/OperatorCollections";
+import { OperatorCountyData } from "../ct/operator/OperatorCountyData";
+import { OperatorDispatch } from "../ct/operator/OperatorDispatch";
+import { OperatorExceptions } from "../ct/operator/OperatorExceptions";
+import { OperatorJurisdiction } from "../ct/operator/OperatorJurisdiction";
+import { OwnerApp } from "../ct/owner/OwnerApp";
+import { WorkerApp } from "../ct/worker/WorkerApp";
 import { SurfaceBoundary } from "./trace/SurfaceBoundary";
 import { ctPalette as t } from "../shared/primitives";
 import { useRegisterShell, type CtDeskId } from "./RegisterShellContext";
@@ -32,72 +31,55 @@ function deskTabStyle(active: boolean) {
   };
 }
 
-type AgencyModuleId = "clients" | "work" | "settings";
-type WorkModalId = "exceptions" | "audit" | "reconciling" | "appeals" | "inbound" | "state-admin";
+type OperatorModuleId = "clients" | "work" | "settings";
+type WorkModalId = "exceptions" | "audit" | "collections" | "county-data" | "dispatch";
 
 const SETTINGS_SURFACES = new Set([
-  "agency-ct-settings",
-  "agency-ct-jurisdiction",
-  "agency-ct-filing-method",
-  "agency-ct-expected-days",
-  "agency-ct-fee-cap",
-  "agency-ct-row-completeness",
-  "agency-ct-or-license-slot",
-  "agency-ct-license-coverage",
-  "agency-ct-licensed-roster",
-  "agency-ct-submit-approval",
+  "trim-ct-op-jurisdiction",
+  "trim-ct-op-ptc-capacity",
+  "trim-ct-op-rollout-gate",
+  "trim-ct-op-entity-signer",
+  "trim-ct-op-appeal-window",
+  "trim-ct-op-fee-cap",
+  "trim-ct-op-licensed-roster",
 ]);
 
 const CLIENTS_SURFACES = new Set([
-  "agency-ct-portfolio",
-  "agency-ct-client-dedupe",
-  "agency-ct-detected-blocked",
-  "agency-ct-ma-escheat",
-  "agency-ct-successor-standing",
-  "agency-ct-legal-staleness",
-  "agency-ct-revoke-representation",
-  "agency-ct-commercial-conflict",
-  "agency-ct-public-entity",
-  "agency-ct-invoice-collection",
+  "trim-ct-op-portfolio",
+  "trim-ct-op-detected-blocked",
+  "trim-ct-op-invoice-collection",
+  "trim-ct-op-revoke-representation",
 ]);
 
-function agencyModuleForSurface(surfaceId: string | null): AgencyModuleId | null {
+const WORK_SURFACES: Record<string, WorkModalId> = {
+  "trim-ct-op-exceptions": "exceptions",
+  "trim-ct-op-hearing-report-review": "exceptions",
+  "trim-ct-op-inbound-board": "exceptions",
+  "trim-ct-op-audit": "audit",
+  "trim-ct-op-standing-snapshot": "audit",
+  "trim-ct-op-collections": "collections",
+  "trim-ct-op-county-data": "county-data",
+  "trim-ct-op-worker-dispatch": "dispatch",
+};
+
+function operatorModuleForSurface(surfaceId: string | null): OperatorModuleId | null {
   if (!surfaceId) return null;
   if (CLIENTS_SURFACES.has(surfaceId)) return "clients";
   if (SETTINGS_SURFACES.has(surfaceId)) return "settings";
-  if (
-    surfaceId === "agency-ct-work" ||
-    surfaceId === "agency-ct-exceptions" ||
-    surfaceId === "agency-ct-resubmit" ||
-    surfaceId === "agency-ct-audit" ||
-    surfaceId === "agency-ct-reconciling" ||
-    surfaceId === "agency-ct-appeal" ||
-    surfaceId === "agency-ct-inbound-matcher" ||
-    surfaceId === "agency-ct-state-admin-workload" ||
-    surfaceId === "agency-ct-standing-snapshot"
-  ) {
-    return "work";
-  }
+  if (surfaceId in WORK_SURFACES || surfaceId.startsWith("trim-ct-op-")) return "work";
   return null;
 }
 
 function workModalForSurface(surfaceId: string | null): WorkModalId | null {
   if (!surfaceId) return null;
-  if (surfaceId === "agency-ct-audit" || surfaceId === "agency-ct-standing-snapshot") return "audit";
-  if (surfaceId === "agency-ct-reconciling") return "reconciling";
-  if (surfaceId === "agency-ct-appeal") return "appeals";
-  if (surfaceId === "agency-ct-inbound-matcher") return "inbound";
-  if (surfaceId === "agency-ct-state-admin-workload") return "state-admin";
-  if (surfaceId === "agency-ct-exceptions" || surfaceId === "agency-ct-resubmit") return "exceptions";
-  if (surfaceId === "agency-ct-work") return "exceptions";
-  return null;
+  return WORK_SURFACES[surfaceId] ?? null;
 }
 
-function EmbeddedAgencyDesk() {
+function EmbeddedOperatorDesk() {
   const { focusedSurfaceId, focusSeq } = useRegisterTrace();
-  const fromFocus = agencyModuleForSurface(focusedSurfaceId);
+  const fromFocus = operatorModuleForSurface(focusedSurfaceId);
   const workFromFocus = workModalForSurface(focusedSurfaceId);
-  const [module, setModule] = useState<AgencyModuleId>("clients");
+  const [module, setModule] = useState<OperatorModuleId>("clients");
   const [workModal, setWorkModal] = useState<WorkModalId>("exceptions");
 
   useEffect(() => {
@@ -109,95 +91,46 @@ function EmbeddedAgencyDesk() {
   const activeWork = workFromFocus ?? workModal;
 
   let body: ReactNode = null;
-  if (active === "clients") body = <AgencyClients />;
+  if (active === "clients") body = <OperatorClients />;
   else if (active === "settings") {
     body = (
-      <SurfaceBoundary id="agency-ct-settings" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+      <SurfaceBoundary id="trim-ct-op-jurisdiction" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
         <div style={{ padding: "20px 40px 0" }}>
           <div style={{ fontSize: 20, fontWeight: 700, color: t.ink }}>Settings</div>
           <div style={{ fontSize: 12.5, color: t.label, marginTop: 4, marginBottom: 12 }}>
-            Agency standing — jurisdiction / PTC licensure gates outreach and filing.
-          </div>
-          <div
-            style={{
-              fontSize: 12.5,
-              fontWeight: 600,
-              color: t.ink,
-              paddingBottom: 10,
-              borderBottom: `2px solid ${t.accent}`,
-              display: "inline-block",
-            }}
-          >
-            Jurisdiction table
+            Operator standing — jurisdiction / PTC licensure gates outreach and filing.
           </div>
         </div>
-        <AgencyJurisdiction />
+        <div style={{ flex: 1, overflowY: "auto" }}>
+          <OperatorJurisdiction />
+        </div>
       </SurfaceBoundary>
     );
   } else {
-    body = (
-      <SurfaceBoundary id="agency-ct-work" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
-        <div
-          style={{
-            display: "flex",
-            gap: 4,
-            padding: "12px 24px 0",
-            borderBottom: `1px solid ${t.stroke}`,
-            flexWrap: "wrap",
-          }}
-        >
-          {(
-            [
-              { id: "exceptions", label: "Exception queue" },
-              { id: "audit", label: "Audit log" },
-              { id: "reconciling", label: "Reconciling queue" },
-              { id: "appeals", label: "Appeal queue" },
-              { id: "inbound", label: "Inbound matcher" },
-              { id: "state-admin", label: "State Admin Workload" },
-            ] as const
-          ).map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setWorkModal(tab.id)}
-              style={{
-                padding: "8px 12px",
-                fontSize: 12.5,
-                fontWeight: activeWork === tab.id ? 600 : 500,
-                color: activeWork === tab.id ? t.ink : t.label,
-                border: "none",
-                borderBottom: activeWork === tab.id ? `2px solid ${t.accent}` : "2px solid transparent",
-                background: "transparent",
-                cursor: "pointer",
-                fontFamily: "inherit",
-                marginBottom: -1,
-              }}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-        <div style={{ flex: 1, overflowY: "auto" }}>
-          {activeWork === "exceptions" ? (
-            <AgencyExceptions />
-          ) : activeWork === "audit" ? (
-            <AgencyAudit />
-          ) : activeWork === "reconciling" ? (
-            <AgencyReconciling />
-          ) : activeWork === "appeals" ? (
-            <AgencyAppeals />
-          ) : activeWork === "inbound" ? (
-            <AgencyInbound />
-          ) : (
-            <AgencyStateAdmin />
-          )}
-        </div>
-      </SurfaceBoundary>
-    );
+    body =
+      activeWork === "audit" ? (
+        <OperatorAudit />
+      ) : activeWork === "collections" ? (
+        <OperatorCollections />
+      ) : activeWork === "county-data" ? (
+        <OperatorCountyData />
+      ) : activeWork === "dispatch" ? (
+        <OperatorDispatch />
+      ) : (
+        <OperatorExceptions />
+      );
   }
 
+  const workItems: { id: WorkModalId; label: string }[] = [
+    { id: "exceptions", label: "Exceptions" },
+    { id: "audit", label: "Audit" },
+    { id: "collections", label: "Collections" },
+    { id: "county-data", label: "County data" },
+    { id: "dispatch", label: "Dispatch" },
+  ];
+
   return (
-    <div style={{ display: "flex", height: "100%", background: t.canvas, fontFamily: "inherit" }}>
+    <div style={{ display: "flex", height: "100%", background: t.canvas }}>
       <aside
         style={{
           width: 160,
@@ -223,9 +156,9 @@ function EmbeddedAgencyDesk() {
         <nav style={{ display: "flex", flexDirection: "column", gap: 2, padding: 8, flex: 1 }}>
           {(
             [
-              { id: "clients", label: "Clients" },
-              { id: "work", label: "Work" },
-              { id: "settings", label: "Settings" },
+              { id: "clients" as const, label: "Clients" },
+              { id: "work" as const, label: "Work" },
+              { id: "settings" as const, label: "Settings" },
             ] as const
           ).map((item) => (
             <button
@@ -237,19 +170,46 @@ function EmbeddedAgencyDesk() {
                 alignItems: "center",
                 padding: "8px 10px",
                 borderRadius: 4,
+                border: "none",
                 fontSize: 12.5,
                 fontWeight: active === item.id ? 600 : 500,
                 color: active === item.id ? t.ink : t.label,
                 background: active === item.id ? t.block : "transparent",
-                border: "none",
-                cursor: "pointer",
                 fontFamily: "inherit",
+                cursor: "pointer",
                 textAlign: "left",
               }}
             >
               {item.label}
             </button>
           ))}
+          {active === "work" ? (
+            <div style={{ marginTop: 8, borderTop: `1px solid ${t.stroke}`, paddingTop: 8 }}>
+              {workItems.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setWorkModal(item.id)}
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    padding: "6px 10px",
+                    border: "none",
+                    borderRadius: 4,
+                    fontSize: 11.5,
+                    fontWeight: activeWork === item.id ? 600 : 500,
+                    color: activeWork === item.id ? t.ink : t.muted,
+                    background: activeWork === item.id ? t.frame : "transparent",
+                    fontFamily: "inherit",
+                    cursor: "pointer",
+                    textAlign: "left",
+                  }}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          ) : null}
         </nav>
       </aside>
       <main style={{ flex: 1, overflowY: "auto", minWidth: 0 }}>{body}</main>
@@ -312,8 +272,12 @@ export function RegisterClickThroughPanel() {
         </div>
       </header>
       <div style={{ flex: 1, minHeight: 0, minWidth: 0, overflow: "hidden" }}>
-        {ctDesk === "owner" ? <BusinessApp embedded /> : ctDesk === "operator" ? <EmbeddedAgencyDesk /> : (
-          <div style={{ padding: "40px 24px", color: t.muted, fontSize: 13 }}>Worker CT — next pass.</div>
+        {ctDesk === "owner" ? (
+          <OwnerApp embedded />
+        ) : ctDesk === "operator" ? (
+          <EmbeddedOperatorDesk />
+        ) : (
+          <WorkerApp embedded />
         )}
       </div>
     </div>
