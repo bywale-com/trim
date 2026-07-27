@@ -6,8 +6,8 @@ Copy of methodology gates. Update checkboxes as gates clear.
 
 - [x] `seed-complete` → World
 - [x] `world-complete` → SME
-- [ ] `sme-pass1-locked` → SME Pass2
-- [ ] `sme-handoff-ready` → Function ∥ Wiring Function (sync on CROSS-CUTTING)
+- [x] `sme-pass1-locked` → SME Pass2
+- [x] `sme-handoff-ready` → Function ∥ Wiring Function (sync on CROSS-CUTTING)
 - [ ] `function-complete` → Enrichment
 - [ ] `enrichment-complete` → Furnish
 - [ ] `furnish-written` → CT plant of Furnish
