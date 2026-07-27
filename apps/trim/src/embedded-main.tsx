@@ -4,7 +4,7 @@ import { RegisterApp } from "./app/Router";
 import "./styles/index.css";
 
 /**
- * Embedded Trove B2B Register — own app inside Om Coda HQ iframe.
+ * Embedded Trim Register — own app inside Om Coda HQ iframe.
  * Basename keeps routing isolated from the HQ shell.
  */
 createRoot(document.getElementById("root")!).render(

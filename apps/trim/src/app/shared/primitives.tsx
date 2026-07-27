@@ -1,5 +1,5 @@
 /**
- * Om Coda Prototype DS-I — Register gray primitives for Trove B2B.
+ * Om Coda Prototype DS-I — Register gray primitives for Trim.
  *
  * Copied in *pattern* from the sibling `trove` app's
  * `src/app/ct/primitives.tsx` (itself patterned from Tally's
@@ -284,7 +284,7 @@ export function CtDeskShell({
           <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
             {!embedded ? (
               <span style={{ fontSize: 13, fontWeight: 700, color: t.ink, letterSpacing: "-0.01em" }}>
-                Trove B2B
+                Trim
               </span>
             ) : null}
             <span

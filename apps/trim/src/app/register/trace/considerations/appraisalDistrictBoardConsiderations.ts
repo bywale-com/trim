@@ -4,7 +4,15 @@
  */
 import type { SmeItem } from "../smeTypes";
 
-export const APPRAISAL_DISTRICT_BOARD_ITEMS: SmeItem[] = [
+const withImplementation = (items: SmeItem[]): SmeItem[] =>
+  items.map((item) => ({
+    ...item,
+    implementationProblem: item.consideration,
+    implementation: `On linked CT surfaces, you can now ${item.solution}`,
+    implementationPlant: "not_done" as const,
+  }));
+
+export const APPRAISAL_DISTRICT_BOARD_ITEMS: SmeItem[] = withImplementation([
   {
     id: "brd-01",
     consideration:
@@ -431,4 +439,4 @@ export const APPRAISAL_DISTRICT_BOARD_ITEMS: SmeItem[] = [
     implementsSurfaceIds: ["trim-ct-worker-county-rules", "trim-ct-worker-appear-checklist", "trim-ct-op-worker-dispatch"],
     status: "partial",
   },
-];
+]);

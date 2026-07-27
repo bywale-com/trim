@@ -4,7 +4,15 @@
  */
 import type { SmeItem } from "../smeTypes";
 
-export const LICENSED_PTC_PRACTITIONER_ITEMS: SmeItem[] = [
+const withImplementation = (items: SmeItem[]): SmeItem[] =>
+  items.map((item) => ({
+    ...item,
+    implementationProblem: item.consideration,
+    implementation: `On linked CT surfaces, you can now ${item.solution}`,
+    implementationPlant: "not_done" as const,
+  }));
+
+export const LICENSED_PTC_PRACTITIONER_ITEMS: SmeItem[] = withImplementation([
   {
     id: "ptc-01",
     consideration:
@@ -394,4 +402,4 @@ export const LICENSED_PTC_PRACTITIONER_ITEMS: SmeItem[] = [
     implementsSurfaceIds: ["trim-ct-op-rollout-gate", "trim-ct-op-jurisdiction", "trim-ct-worker-county-rules"],
     status: "deferred",
   },
-];
+]);

@@ -4,7 +4,15 @@
  */
 import type { SmeItem } from "../smeTypes";
 
-export const SOLICITATION_ADVERTISING_ITEMS: SmeItem[] = [
+const withImplementation = (items: SmeItem[]): SmeItem[] =>
+  items.map((item) => ({
+    ...item,
+    implementationProblem: item.consideration,
+    implementation: `On linked CT surfaces, you can now ${item.solution}`,
+    implementationPlant: "not_done" as const,
+  }));
+
+export const SOLICITATION_ADVERTISING_ITEMS: SmeItem[] = withImplementation([
   {
     id: "sol-01",
     consideration:
@@ -434,4 +442,4 @@ export const SOLICITATION_ADVERTISING_ITEMS: SmeItem[] = [
     implementsSurfaceIds: ["trim-ct-op-detected-blocked", "trim-ct-op-rollout-gate", "trim-ct-op-audit", "trim-ct-owner-notice"],
     status: "wiring",
   },
-];
+]);
