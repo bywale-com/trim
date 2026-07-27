@@ -1,19 +1,19 @@
 import type { FlowMap } from "./types";
 import { activateNoticeFlow } from "./activateNotice";
 import { consentAuthorizeFlow } from "./consentAuthorize";
-import { fileClaimPacketFlow } from "./fileClaimPacket";
-import { recoverKickbackFlow } from "./recoverKickback";
-import { closePaidInvoiceFlow } from "./closePaidInvoice";
+import { evidenceHearingFlow } from "./evidenceHearing";
+import { reduceInvoiceFlow } from "./reduceInvoice";
+import { recoverExceptionFlow } from "./recoverException";
 
 export * from "./types";
 
-/** Flow anchors, in Register order (see docs/register/FLOWS.md). */
+/** Flow anchors, in Trim protest Register order. */
 export const REGISTER_FLOWS: FlowMap[] = [
   activateNoticeFlow,
   consentAuthorizeFlow,
-  fileClaimPacketFlow,
-  recoverKickbackFlow,
-  closePaidInvoiceFlow,
+  evidenceHearingFlow,
+  reduceInvoiceFlow,
+  recoverExceptionFlow,
 ];
 
 export function getRegisterFlow(id: string): FlowMap | undefined {
