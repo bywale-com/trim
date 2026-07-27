@@ -60,7 +60,7 @@ Ranked by how much they change the existing Register (`docs/register/*`).
 
 **Sources:** `pass1/licensed-ptc-practitioner.md` ptc-22-ptc-24; `pass2/licensed-ptc-practitioner.md` ptc-22-ptc-24; `pass1/mortgage-escrow.md` esc-16-esc-18, esc-22-esc-24; `pass2/mortgage-escrow.md` esc-16-esc-18, esc-22-esc-24; `pass1/tax-accounting-treatment.md` tax-11-tax-13, tax-23; `pass2/tax-accounting-treatment.md` tax-11-tax-13, tax-23.
 
-**Reconciliation needed:** PM needs Owner-facing invoice and dispute states that are honest about realized benefit versus cash timing. CTO needs a collections pipeline without escrow assumptions. This is also the strongest open candidate for an 11th SME seat.
+**Reconciliation needed:** PM needs Owner-facing invoice and dispute states that are honest about realized benefit versus cash timing. CTO needs a collections pipeline without escrow assumptions. **Seat 11 (`collections-ar`) is greenlit** to source incumbent collection practice before Function invents invoicing/dunning from analogy. Mid-sale exposure is *not* a separate seat — one fee-agreement clause (obligation survives transfer / attaches at filing), folded as a single Pass 1 question.
 
 ---
 
@@ -124,6 +124,8 @@ Ranked by how much they change the existing Register (`docs/register/*`).
 
 ---
 
-## Open item, not yet a cross-cut (flagged, not resolved)
+## Seat 11 greenlight (was open item)
 
-**Possible 11th SME seat - collections/AR specialist.** The SME room confirms invoice-after-reduction risk, measured-savings disputes, escrow/reserve timing gaps, and no Trim-held funds. It does **not** source incumbent collection practices, dispute rates, effective dunning language, ACH/card authorization norms, or AR workflow economics for property-tax contingency firms. If expected volume makes collections material, add a collections/AR process seat rather than inventing the practice from analogy.
+**`collections-ar` — collections/AR specialist.** Greenlit because the room confirmed invoice-after-reduction risk with **zero sourced practice** on how contingency firms actually collect. Pass 1 + Pass 2 source: dispute rates, dunning language that works, ACH/card authorization norms, industry bad-debt %, invoice-after-benefit workflows. Mid-sale parcel transfer is **one fee-clause question among ~25**, not a seat — write "fee obligation survives transfer / attaches at filing"; skip the ceremony.
+
+See `pass1/collections-ar.md` / `pass2/collections-ar.md` (in flight when this note lands).

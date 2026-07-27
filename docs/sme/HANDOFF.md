@@ -40,14 +40,14 @@ Every bullet below traces to Pass 1 / Pass 2 SME files. This is input for PM Reg
 - State/channel solicitation analogs beyond Texas, California, Georgia, Illinois, Florida, and New York launch notes. *(solicitation-advertising-compliance sol-15, sol-18, sol-27)*
 - Parcel-level valuation confidence thresholds for first-touch quantified excess amounts. *(valuation-mass-appraisal val-20, val-26)*
 - Launch-state sales taxability for Trim's bundled consulting/data/SaaS/document-prep services. *(tax-accounting-treatment tax-24)*
-- Collections/AR incumbent practice: dispute rates, dunning patterns, ACH/card norms, and effective invoice-after-benefit workflows. This is the open 11th-seat candidate, not a sourced fact. *(ROSTER.md watchlist; CROSS-CUTTING.md open item)*
+- ~~Collections/AR incumbent practice~~ → **Seat 11 greenlit** (`collections-ar`). Sourced in Pass 1/2; fold mid-sale fee-survival clause as one question, not a seat. Remaining NVs stay on that seat's Pass 2.
 
 ## Files in this room
 
 - `docs/register/SEED.md` - seed context and known unknowns.
 - `docs/register/WORLD.md` - Trim world model, seats, states, never-sees.
-- `docs/sme/ROSTER.md` - 10 SME seats, targets, rules, and watchlist.
-- `docs/sme/pass1/*.md` (10 files) - sourced questions only.
-- `docs/sme/pass2/*.md` (10 files) - mechanisms answering Pass 1.
-- `docs/sme/CROSS-CUTTING.md` - 10 joint PM/CTO findings plus open 11th-seat candidate.
+- `docs/sme/ROSTER.md` - 11 SME seats (collections-ar greenlit), targets, rules, watchlist.
+- `docs/sme/pass1/*.md` (11 files) - sourced questions only.
+- `docs/sme/pass2/*.md` (11 files) - mechanisms answering Pass 1.
+- `docs/sme/CROSS-CUTTING.md` - 10 joint PM/CTO findings; seat 11 greenlight note.
 - `docs/sme/HANDOFF.md` - this file.

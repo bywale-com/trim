@@ -4,7 +4,7 @@
 
 - Modules: `trim-mod-*`
 - Surfaces: `trim-ct-*`
-- SME considerations: seat-short prefix (e.g. `ptc-01`, `val-01`, `lic-01`, `sol-01`, `brd-01`, `jud-01`, `dat-01`, `esc-01`, `tax-01`, `trs-01`)
+- SME considerations: seat-short prefix (e.g. `ptc-01`, `val-01`, `lic-01`, `sol-01`, `brd-01`, `jud-01`, `dat-01`, `esc-01`, `tax-01`, `trs-01`, `col-01`)
 
 ## Phrasing
 

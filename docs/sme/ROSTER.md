@@ -13,7 +13,7 @@
 
 ---
 
-## Roster (10)
+## Roster (11)
 
 | # | Seat id | Domain lane | Why (failure mode if absent) | Target count |
 |---|---------|-------------|------------------------------|-------------:|
@@ -27,13 +27,15 @@
 | 8 | `mortgage-escrow` | Escrow adjustment timing; multifamily lender-held escrows | Fee timing / felt-win wrong when residential or escrowed MF enters | 20–26 |
 | 9 | `tax-accounting-treatment` | Expense reduction vs income; 1099 on Trim fee; multi-year savings booking | Consent/disclosure gaps; Trim's own tax ops | 20–26 |
 | 10 | `trust-anti-scam-perception` | Owlue-class scam perception; four-element trust kit; non-affiliation | Activation dies on "is this a scam?" | 24–28 |
-| | **Total floor** | | | **~240** |
+| 11 | `collections-ar` | Contingency fee collection after reduction: ACH norms, dunning, dispute rates, bad-debt, fee-survival-on-transfer clause | Without sourced practice, invoicing/dunning invents from analogy — the failure mode the Register exists to prevent | 25–28 |
+| | **Total floor** | | | **~265** |
+
+**Seat 11 greenlight:** The room confirmed invoice-after-reduction risk with zero sourced incumbent practice. Mid-sale exposure is **not** a separate seat — fold as one Pass 1 question (fee obligation survives parcel transfer / attaches at filing). Write the clause; skip the ceremony.
 
 Machine twin target: `apps/trim/src/app/register/trace/smeRegistry.ts` + `considerations/*.ts`.
 
 ## Watchlist (not seats yet)
 
-- Collections/AR process (invoice-after-reduction collection risk — may become 11th seat if volume material).
 - Bonding / insurance requirements for consultants.
 - Remote-notary / e-sign acceptance for Appointment of Agent by county.
 
