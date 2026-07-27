@@ -16,6 +16,18 @@ import { AgencyStateAdmin } from "./ct/agency/AgencyStateAdmin";
 import { AgencyWork } from "./ct/agency/AgencyWork";
 import { BusinessApp } from "./ct/business/BusinessApp";
 import { Hub } from "./ct/Hub";
+import { OwnerApp } from "./ct/owner/OwnerApp";
+import { OperatorApp } from "./ct/operator/OperatorApp";
+import { OperatorClients } from "./ct/operator/OperatorClients";
+import { OperatorWork } from "./ct/operator/OperatorWork";
+import { OperatorExceptions } from "./ct/operator/OperatorExceptions";
+import { OperatorAudit } from "./ct/operator/OperatorAudit";
+import { OperatorCollections } from "./ct/operator/OperatorCollections";
+import { OperatorCountyData } from "./ct/operator/OperatorCountyData";
+import { OperatorDispatch } from "./ct/operator/OperatorDispatch";
+import { OperatorSettings } from "./ct/operator/OperatorSettings";
+import { OperatorJurisdiction } from "./ct/operator/OperatorJurisdiction";
+import { WorkerApp } from "./ct/worker/WorkerApp";
 import { RegisterShellProvider } from "./register/RegisterShellContext";
 import { RegisterWorkspace } from "./register/RegisterWorkspace";
 import { RegisterFurnish } from "./register/panes/RegisterFurnish";
@@ -46,7 +58,34 @@ export function RegisterApp() {
             <Route path="ct" element={<Navigate to="/register/world" replace />} />
           </Route>
 
+          {/* ── CT Hub ──────────────────────────────────────────────────── */}
           <Route path="/ct" element={<Hub />} />
+
+          {/* ── Owner desk (/ct/owner) ──────────────────────────────────── */}
+          <Route path="/ct/owner/*" element={<OwnerApp />} />
+
+          {/* ── Operator desk (/ct/operator) ───────────────────────────── */}
+          <Route path="/ct/operator" element={<OperatorApp />}>
+            <Route index element={<Navigate to="clients" replace />} />
+            <Route path="clients" element={<OperatorClients />} />
+            <Route path="work" element={<OperatorWork />}>
+              <Route index element={<Navigate to="exceptions" replace />} />
+              <Route path="exceptions" element={<OperatorExceptions />} />
+              <Route path="audit" element={<OperatorAudit />} />
+              <Route path="collections" element={<OperatorCollections />} />
+              <Route path="county-data" element={<OperatorCountyData />} />
+              <Route path="dispatch" element={<OperatorDispatch />} />
+            </Route>
+            <Route path="settings" element={<OperatorSettings />}>
+              <Route index element={<Navigate to="jurisdiction" replace />} />
+              <Route path="jurisdiction" element={<OperatorJurisdiction />} />
+            </Route>
+          </Route>
+
+          {/* ── Worker desk (/ct/worker) ────────────────────────────────── */}
+          <Route path="/ct/worker/*" element={<WorkerApp />} />
+
+          {/* ── Legacy paths (redirect to new Trim paths) ─────────────── */}
           <Route path="/ct/business/*" element={<BusinessApp />} />
           <Route path="/ct/agency" element={<AgencyApp />}>
             <Route index element={<Navigate to="clients" replace />} />
@@ -69,8 +108,8 @@ export function RegisterApp() {
             </Route>
             <Route path="jurisdiction" element={<Navigate to="settings/jurisdiction" replace />} />
           </Route>
-          <Route path="/ct/ops" element={<Navigate to="/ct/agency" replace />} />
-          <Route path="/ct/ops/*" element={<Navigate to="/ct/agency" replace />} />
+          <Route path="/ct/ops" element={<Navigate to="/ct/operator" replace />} />
+          <Route path="/ct/ops/*" element={<Navigate to="/ct/operator" replace />} />
 
           <Route path="*" element={<Navigate to="/register" replace />} />
         </Routes>

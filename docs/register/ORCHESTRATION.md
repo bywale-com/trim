@@ -12,7 +12,7 @@ Copy of methodology gates. Update checkboxes as gates clear.
 - [x] `enrichment-complete` → Furnish
 - [x] `furnish-written` → CT plant of Furnish
 - [x] `wiring-synced` → deep CT on cross-cutting surfaces
-- [ ] `ct-verify-green` → Translation
+- [x] `ct-verify-green` → Translation
 
 ## Verify
 

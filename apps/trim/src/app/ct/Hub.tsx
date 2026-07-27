@@ -14,14 +14,14 @@ const blockedCount = JURISDICTIONS.filter((j) => j.status === "blocked").length;
 const PERSONAS = [
   {
     id: "owner",
-    to: "/ct/business",
+    to: "/ct/owner",
     label: "Owner",
     fact: `One owning entity · ${BUSINESS_CASES.length} protest cases — Notice through reduction + invoice.`,
     tag: "Owner seat",
   },
   {
     id: "operator",
-    to: "/ct/agency",
+    to: "/ct/operator",
     label: "Operator",
     fact: `Clients · Work · Settings · ${kickedBackCount} exception · ${blockedCount} jurisdictions blocked.`,
     tag: "Operator seat",
