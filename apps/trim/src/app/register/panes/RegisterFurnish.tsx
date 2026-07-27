@@ -98,7 +98,7 @@ function FurnishItemRow({ item, last }: { item: FurnishItem; last: boolean }) {
 }
 
 function PersonaBlock({ persona }: { persona: FurnishPersona }) {
-  const [open, setOpen] = useState(persona.id === "business");
+  const [open, setOpen] = useState(persona.id === "owner");
   const notDoneCount = persona.items.filter((i) => i.implementationPlant === "not_done").length;
   return (
     <CtPanel

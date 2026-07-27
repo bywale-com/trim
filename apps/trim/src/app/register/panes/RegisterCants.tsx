@@ -1,9 +1,9 @@
 import { CtPanel, CtRow, ctPalette as t } from "../../shared/primitives";
-import { AGENCY_CANTS, BUSINESS_CANTS } from "../trace/cants";
+import { OPERATOR_CANTS, OWNER_CANTS, WORKER_CANTS, type CantItem } from "../trace/cants";
 import { RegisterCanvas } from "../RegisterWorkspace";
 import { StatusChip, SurfaceChips } from "./TraceChips";
 
-function CantList({ title, items }: { title: string; items: typeof BUSINESS_CANTS }) {
+function CantList({ title, items }: { title: string; items: CantItem[] }) {
   return (
     <CtPanel title={title} right={<span style={{ fontSize: 11, color: t.muted }}>{items.length}</span>}>
       {items.map((item, i) => (
@@ -30,8 +30,9 @@ export function RegisterCants() {
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-        <CantList title="Business" items={BUSINESS_CANTS} />
-        <CantList title="Agency Owner" items={AGENCY_CANTS} />
+        <CantList title="Owner" items={OWNER_CANTS} />
+        <CantList title="Operator" items={OPERATOR_CANTS} />
+        <CantList title="Worker" items={WORKER_CANTS} />
       </div>
     </RegisterCanvas>
   );

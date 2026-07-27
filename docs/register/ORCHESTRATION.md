@@ -8,10 +8,10 @@ Copy of methodology gates. Update checkboxes as gates clear.
 - [x] `world-complete` → SME
 - [x] `sme-pass1-locked` → SME Pass2
 - [x] `sme-handoff-ready` → Function ∥ Wiring Function (sync on CROSS-CUTTING)
-- [ ] `function-complete` → Enrichment
-- [ ] `enrichment-complete` → Furnish
-- [ ] `furnish-written` → CT plant of Furnish
-- [ ] `wiring-synced` → deep CT on cross-cutting surfaces
+- [x] `function-complete` → Enrichment
+- [x] `enrichment-complete` → Furnish
+- [x] `furnish-written` → CT plant of Furnish
+- [x] `wiring-synced` → deep CT on cross-cutting surfaces
 - [ ] `ct-verify-green` → Translation
 
 ## Verify
@@ -25,10 +25,10 @@ npx tsx scripts/audit-sme-plant-gap.ts
 
 ## Anti-pattern check (instant fail)
 
-- [ ] SME is not ~1 consideration per seat (Trim ceremony)
-- [ ] HowUiRef has surfaceId join
-- [ ] Wiring exists (not a comment)
-- [ ] Product owns docs/register + docs/sme (not only omcoda-hq.vercel.app)
+- [x] SME is not ~1 consideration per seat (Trim ceremony)
+- [x] HowUiRef has surfaceId join
+- [x] Wiring exists (not a comment)
+- [x] Product owns docs/register + docs/sme (not only omcoda-hq.vercel.app)
 - [ ] No Translation before CT verify
 
 ## Reference

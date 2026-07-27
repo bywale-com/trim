@@ -1,31 +1,38 @@
 /**
  * Furnish registry — supporting UI abilities per persona + written Implementations.
- * Machine twin expanded beyond docs/register/FURNISHING.md (100 / persona).
+ * Machine twin expanded beyond docs/register/FURNISHING.md.
  */
 export type { FurnishItem, FurnishStatus } from "./furnishTypes";
-export { BUSINESS_FURNISH } from "./furnish/businessFurnish";
-export { AGENCY_FURNISH } from "./furnish/agencyFurnish";
+export { OPERATOR_FURNISH } from "./furnish/operatorFurnish";
+export { OWNER_FURNISH } from "./furnish/ownerFurnish";
+export { WORKER_FURNISH } from "./furnish/workerFurnish";
 
-import { AGENCY_FURNISH } from "./furnish/agencyFurnish";
-import { BUSINESS_FURNISH } from "./furnish/businessFurnish";
+import { OPERATOR_FURNISH } from "./furnish/operatorFurnish";
+import { OWNER_FURNISH } from "./furnish/ownerFurnish";
+import { WORKER_FURNISH } from "./furnish/workerFurnish";
 import type { FurnishItem } from "./furnishTypes";
 
 export type FurnishPersona = {
-  id: "business" | "agency";
+  id: "owner" | "operator" | "worker";
   label: string;
   items: FurnishItem[];
 };
 
 export const FURNISH_PERSONAS: FurnishPersona[] = [
   {
-    id: "business",
-    label: "Business",
-    items: BUSINESS_FURNISH,
+    id: "owner",
+    label: "Owner",
+    items: OWNER_FURNISH,
   },
   {
-    id: "agency",
-    label: "Agency Owner",
-    items: AGENCY_FURNISH,
+    id: "operator",
+    label: "Operator",
+    items: OPERATOR_FURNISH,
+  },
+  {
+    id: "worker",
+    label: "Worker",
+    items: WORKER_FURNISH,
   },
 ];
 
